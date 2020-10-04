@@ -10,7 +10,7 @@ pipeline {
   }       
   steps {
        sh 'ping -c2 repo.spring.io' 
-       sh 'mvn clean install'
+       sh './mvnw package'
        }
      }
    }
