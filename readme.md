@@ -3,12 +3,21 @@
 ## Understanding the Spring Petclinic application with a few diagrams
 <a href="https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application">See the presentation here</a>
 
+## Running petclinic on Kubernetes
+You need a working cluster, also adjust how do you want to expose the service. If you do not have a loadbalancer and ingress enabled on youe cluster, try exposing the service as NodePort.
+```
+kubectl create -f 
+git clone https://github.com/govindkailas/spring-petclinic.git
+cd spring-petclinic
+kubectl create -f spring-petclinic-k8s.yaml
+```
+
 ## Running petclinic locally
 Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/). You can build a jar file and run it from the command line:
 
 
 ```
-git clone https://github.com/spring-projects/spring-petclinic.git
+git clone https://github.com/govindkailas/petclinic/spring-petclinic.git
 cd spring-petclinic
 ./mvnw package
 java -jar target/*.jar
@@ -63,7 +72,7 @@ The following items should be installed in your system:
 
 1) On the command line
     ```
-    git clone https://github.com/spring-projects/spring-petclinic.git
+    git clone https://github.com/govindkailas/spring-petclinic.git
     ```
 2) Inside Eclipse or STS
     ```
