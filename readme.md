@@ -6,7 +6,6 @@
 ## Running petclinic on Kubernetes
 You need a working cluster, also adjust how do you want to expose the service. If you do not have a loadbalancer and ingress enabled on youe cluster, try exposing the service as NodePort.
 ```
-kubectl create -f 
 git clone https://github.com/govindkailas/spring-petclinic.git
 cd spring-petclinic
 kubectl create -f spring-petclinic-k8s.yaml
