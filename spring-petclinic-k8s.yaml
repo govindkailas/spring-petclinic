@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-petclinic
+spec:
+  selector:
+    matchLabels:
+      app: spring-petclinic
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: spring-petclinic
+    spec:
+      spec:
+      securityContext:
+        runAsUser: 1001  #run as non-root user    
+      containers:
+      - name: spring-petclinic
+        image: harbor-repo.vmware.com/dockerhub-proxy-cache/springcommunity/spring-framework-petclinic
+        ports:
+        - name: http
+          containerPort: 8080
+        securityContext:
+          allowPrivilegeEscalation: false #drop privilage escalation
+          privileged: false #run as non-privilaged container
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits: #adjust the below if needed
+            memory: "512Mi"
+            cpu: "300m"  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-petclinic
+  labels:
+    app: spring-petclinic
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: spring-petclinic  
+  type: LoadBalancer # change this to NodePort if needed
