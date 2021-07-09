@@ -17,7 +17,7 @@ spec:
         runAsUser: 1001  #run as non-root user    
       containers:
       - name: spring-petclinic
-        image: harbor-repo.vmware.com/dockerhub-proxy-cache/springcommunity/spring-framework-petclinic
+        image: springcommunity/spring-framework-petclinic
         ports:
         - name: http
           containerPort: 8080
